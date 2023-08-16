@@ -166,6 +166,8 @@ GEM
       rspec-mocks (~> 3.12)
       rspec-support (~> 3.12)
     rspec-support (3.12.1)
+    shoulda-matchers (5.3.0)
+      activesupport (>= 5.2.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -173,7 +175,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    stripe (8.7.0)
+    stripe (9.0.0)
     thor (1.2.2)
     timeout (0.4.0)
     tzinfo (2.0.6)
@@ -192,6 +194,7 @@ DEPENDENCIES
   pg
   puma
   rspec-rails
+  shoulda-matchers (~> 5.0)
   sprockets-rails
 
 BUNDLED WITH
