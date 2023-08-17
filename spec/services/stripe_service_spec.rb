@@ -25,7 +25,7 @@ module PaymentsGateway
 
       let(:payment) { create(:payment) }
       it 'returns a complete card payment object' do
-        expect(described_class.call(payment)).to eq(
+        expect(described_class.call(payment).result).to eq(
           {
             gateway: 'stripe',
             stripe: {

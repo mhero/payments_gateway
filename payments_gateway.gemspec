@@ -21,6 +21,7 @@ Gem::Specification.new do |spec|
   spec.metadata['source_code_uri'] = 'https://github.com/mhero/payments-gateway'
   spec.metadata['changelog_uri'] = 'https://github.com/mhero/payments-gateway'
 
+  spec.add_development_dependency 'dotenv-rails'
   spec.add_development_dependency 'factory_bot_rails'
   spec.add_development_dependency 'rspec-rails'
   spec.add_development_dependency 'rubocop'
@@ -29,7 +30,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'shoulda-matchers', '~> 5.0'
   spec.add_development_dependency 'vcr'
   spec.add_development_dependency 'webmock'
-  spec.add_development_dependency 'dotenv-rails'
 
   spec.add_dependency 'pg'
   spec.add_dependency 'stripe'

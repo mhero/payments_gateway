@@ -6,7 +6,10 @@ module PaymentsGateway
       payment = ::PaymentsGateway::Payment.new(payment_params)
 
       if payment.save
-        render json: payment.provider_service.call(payment), status: :created
+        provider_result = payment.provider_service.call(payment)
+
+        render json: provider_result.result, status: provider_result.success ? :created : :unprocessable_entity
+
       else
         render json: payment.errors, status: :unprocessable_entity
       end

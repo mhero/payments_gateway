@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.stripe.com/v1/payment_intents
     body:
       encoding: UTF-8
-      string: amount=100&currency=EUR&payment_method_types[0]=card
+      string: amount=1000&currency=EUR&payment_method_types[0]=card
     headers:
       User-Agent:
       - Stripe/v1 RubyBindings/9.0.0
@@ -31,11 +31,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Thu, 17 Aug 2023 20:32:33 GMT
+      - Thu, 17 Aug 2023 20:58:57 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '1275'
+      - '1276'
       Connection:
       - keep-alive
       Access-Control-Allow-Credentials:
@@ -51,11 +51,11 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Idempotency-Key:
-      - 839a6ca7-2fe9-4bb7-81f2-73a446b088e5
+      - dfd6bd41-f53d-4cb5-a16c-fff4ed9f4331
       Original-Request:
-      - req_f22oOsb2zRzyGy
+      - req_wOYmQ8TTFaZOYb
       Request-Id:
-      - req_f22oOsb2zRzyGy
+      - req_wOYmQ8TTFaZOYb
       Stripe-Should-Retry:
       - 'false'
       Stripe-Version:
@@ -68,9 +68,9 @@ http_interactions:
       encoding: UTF-8
       string: |-
         {
-          "id": "pi_3NgCrtGYQ7BVXMvg08OqZ1FW",
+          "id": "pi_3NgDHRGYQ7BVXMvg0X7Gdanl",
           "object": "payment_intent",
-          "amount": 100,
+          "amount": 1000,
           "amount_capturable": 0,
           "amount_details": {
             "tip": {}
@@ -82,9 +82,9 @@ http_interactions:
           "canceled_at": null,
           "cancellation_reason": null,
           "capture_method": "automatic",
-          "client_secret": "pi_3NgCrtGYQ7BVXMvg08OqZ1FW_secret_8ZycpK9c0UFOGMYIZ400letKC",
+          "client_secret": "pi_3NgDHRGYQ7BVXMvg0X7Gdanl_secret_TaOTUDehmq3GQpq5ZtDBRpCER",
           "confirmation_method": "automatic",
-          "created": 1692304353,
+          "created": 1692305937,
           "currency": "eur",
           "customer": null,
           "description": null,
@@ -119,5 +119,5 @@ http_interactions:
           "transfer_data": null,
           "transfer_group": null
         }
-  recorded_at: Thu, 17 Aug 2023 20:32:33 GMT
+  recorded_at: Thu, 17 Aug 2023 20:58:58 GMT
 recorded_with: VCR 6.2.0

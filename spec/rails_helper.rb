@@ -13,8 +13,8 @@ require 'rspec/rails'
 require 'factory_bot_rails'
 require 'webmock/rspec'
 require 'vcr'
-require "dotenv"
-Dotenv.overload ".env.test" 
+require 'dotenv'
+Dotenv.overload '.env.test'
 
 FactoryBot.definition_file_paths << File.join(File.dirname(__FILE__), 'factories')
 FactoryBot.factories.clear
@@ -34,6 +34,7 @@ VCR.configure do |c|
   c.ignore_localhost = true
   c.filter_sensitive_data('PLACEHOLDER_AUTHORIZATION') do |interaction|
     next unless interaction.request.headers['Authorization']
+
     interaction.request.headers['Authorization'][0]
   end
 end

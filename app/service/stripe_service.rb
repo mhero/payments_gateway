@@ -13,9 +13,17 @@ class StripeService < ApplicationService
     return unless @payment
     return unless PaymentsGateway::Payment.stripe?(@payment.provider)
 
-    create_intent
-
-    card_payment
+    if create_intent
+      OpenStruct.new(
+        success: true,
+        result: card_payment
+      )
+    else
+      OpenStruct.new(
+        success: false,
+        result: 'unable to create in payment provider'
+      )
+    end
   end
 
   private
@@ -43,7 +51,10 @@ class StripeService < ApplicationService
                                             payment_method_types: PAYMENT_METHOD_TYPES,
                                             customer: @payment.customer_external_id
                                           })
-
+    intent[:status] = 'success'
     payment.update(intent:)
+  rescue Stripe::InvalidRequestError
+    payment.update(intent: { status: 'failed' })
+    nil
   end
 end
