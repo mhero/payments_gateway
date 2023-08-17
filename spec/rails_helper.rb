@@ -11,6 +11,10 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 require 'rspec/rails'
 
 require 'factory_bot_rails'
+require 'webmock/rspec'
+require 'vcr'
+require "dotenv"
+Dotenv.overload ".env.test" 
 
 FactoryBot.definition_file_paths << File.join(File.dirname(__FILE__), 'factories')
 FactoryBot.factories.clear
@@ -22,6 +26,19 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/vcr'
+  c.hook_into :webmock
+  c.configure_rspec_metadata!
+  c.ignore_localhost = true
+  c.filter_sensitive_data('PLACEHOLDER_AUTHORIZATION') do |interaction|
+    next unless interaction.request.headers['Authorization']
+    interaction.request.headers['Authorization'][0]
+  end
+end
+
+WebMock.disable_net_connect!(allow_localhost: true)
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
