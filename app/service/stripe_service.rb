@@ -11,7 +11,7 @@ class StripeService < ApplicationService
 
   def call
     return unless @payment
-    return unless ProviderService.stripe?(@payment.provider)
+    return unless PaymentsGateway::Payment.stripe?(@payment.provider)
 
     create_intent
 
