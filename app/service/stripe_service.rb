@@ -10,8 +10,8 @@ class StripeService < ApplicationService
   end
 
   def call
-    return unless @payment
-    return unless PaymentsGateway::Payment.stripe?(@payment.provider)
+    return no_payment unless @payment
+    return invalid_provider unless PaymentsGateway::Payment.stripe?(@payment.provider)
 
     if create_intent
       OpenStruct.new(
@@ -19,14 +19,32 @@ class StripeService < ApplicationService
         result: card_payment
       )
     else
-      OpenStruct.new(
-        success: false,
-        result: 'unable to create in payment provider'
-      )
+      unable_to_create
     end
   end
 
   private
+
+  def no_payment
+    OpenStruct.new(
+      success: false,
+      result: 'no payment provided'
+    )
+  end
+
+  def invalid_provider
+    OpenStruct.new(
+      success: false,
+      result: 'invalid provider'
+    )
+  end
+
+  def unable_to_create
+    OpenStruct.new(
+      success: false,
+      result: 'unable to create payment intent'
+    )
+  end
 
   def card_payment
     {
