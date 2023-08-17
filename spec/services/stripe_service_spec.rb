@@ -45,7 +45,7 @@ module PaymentsGateway
 
     context 'with invalid payment provider' do
       let(:payment) { create(:payment, provider: 'other') }
-      it 'returns a complete card payment object' do
+      it 'returns nil if provider is invalid' do
         expect(described_class.call(payment)).to be_nil
       end
     end
