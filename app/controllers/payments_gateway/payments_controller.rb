@@ -3,7 +3,7 @@
 module PaymentsGateway
   class PaymentsController < ApplicationController
     def create
-      payment = ::PaymentsGateway::Payment.new(paymnet_params)
+      payment = ::PaymentsGateway::Payment.new(payment_params)
       provider_service = ProviderService.call(payment.provider)
 
       if provider_service && payment.save
@@ -15,7 +15,7 @@ module PaymentsGateway
 
     private
 
-    def paymnet_params
+    def payment_params
       params.fetch(:payment, {}).permit(:amount, :currency, :customer_external_id, :provider)
     end
   end
