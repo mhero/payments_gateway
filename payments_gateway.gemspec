@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the "allowed_push_host"
   # to allow pushing to a single host or delete this section to allow pushing to any host.
   spec.metadata['allowed_push_host'] = "Set to 'http://mygemserver.com'"
-  spec.required_ruby_version = '>= 3.1.2'
+  spec.required_ruby_version = '>= 3.2.2'
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/mhero/payments-gateway'
