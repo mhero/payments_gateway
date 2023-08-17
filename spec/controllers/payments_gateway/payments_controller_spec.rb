@@ -6,7 +6,7 @@ module PaymentsGateway
   RSpec.describe '/payments', type: :request do
     describe 'POST /create' do
       let(:attributes) do
-        { amount: 1000, customer: 'me@example.com', currency: 'EUR', provider: 'stripe' }
+        { amount: 1000, customer_external_id: 3, currency: 'EUR', provider: 'stripe' }
       end
 
       context 'with valid parameters' do
@@ -61,7 +61,7 @@ module PaymentsGateway
       context 'with invalid parameters' do
         context 'with all invalid params' do
           let(:attributes) do
-            { amount: nil, customer: nil, currency: nil }
+            { amount: nil, customer_external_id: nil, currency: nil }
           end
 
           it 'does not create a new payment' do
@@ -81,7 +81,7 @@ module PaymentsGateway
 
         context 'with invalid provider params' do
           let(:attributes) do
-            { amount: 1000, customer: 'me@example.com', currency: 'EUR', provider: 'other' }
+            { amount: 1000, customer_external_id: 4, currency: 'EUR', provider: 'other' }
           end
 
           it 'does not create a new payment' do
