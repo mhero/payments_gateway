@@ -75,6 +75,13 @@ module PaymentsGateway
             post payments_gateway.payments_url,
                  params: { payment: attributes }, as: :json
             expect(response).to have_http_status(:unprocessable_entity)
+            expect(response.body).to eq(
+              {
+                amount: ["can't be blank"],
+                currency: ["can't be blank"],
+                provider: ["can't be blank", 'is not included in the list']
+              }.to_json
+            )
             expect(response.content_type).to match(a_string_including('application/json'))
           end
         end
@@ -95,6 +102,7 @@ module PaymentsGateway
             post payments_gateway.payments_url,
                  params: { payment: attributes }, as: :json
             expect(response).to have_http_status(:unprocessable_entity)
+            expect(response.body).to eq({ provider: ['is not included in the list'] }.to_json)
             expect(response.content_type).to match(a_string_including('application/json'))
           end
         end
