@@ -3,6 +3,8 @@
 class StripeService < ApplicationService
   attr_reader :payment
 
+  PAYMENT_METHOD_TYPES = ['card'].freeze
+
   def initialize(payment)
     @payment = payment
   end
@@ -38,7 +40,7 @@ class StripeService < ApplicationService
     intent = Stripe::PaymentIntent.create({
                                             amount: @payment.amount,
                                             currency: @payment.currency,
-                                            payment_method_types: ['card'],
+                                            payment_method_types: PAYMENT_METHOD_TYPES,
                                             customer: @payment.customer_external_id
                                           })
 
