@@ -8,3 +8,5 @@
 /spec/dummy/tmp/
 
 .env
+
+.byebug_history
