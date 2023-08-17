@@ -3,16 +3,11 @@
 module PaymentsGateway
   class PaymentsController < ApplicationController
     def create
-      payment = ::PaymentsGateway::Payment.new(payment_params)
+      payment_process = PaymentHandlerService.call(
+        ::PaymentsGateway::Payment.new(payment_params)
+      )
 
-      if payment.save
-        provider_result = payment.provider_service.call(payment)
-
-        render json: provider_result.result, status: provider_result.success ? :created : :unprocessable_entity
-
-      else
-        render json: payment.errors, status: :unprocessable_entity
-      end
+      render json: payment_process.result, status: payment_process.success ? :created : :unprocessable_entity
     end
 
     private
