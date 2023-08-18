@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Thu, 17 Aug 2023 20:58:57 GMT
+      - Fri, 18 Aug 2023 15:34:18 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -51,11 +51,11 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Idempotency-Key:
-      - dfd6bd41-f53d-4cb5-a16c-fff4ed9f4331
+      - 270eaa78-ca44-4355-9a26-28160f17eab7
       Original-Request:
-      - req_wOYmQ8TTFaZOYb
+      - req_8sOzuLmS8wHBbE
       Request-Id:
-      - req_wOYmQ8TTFaZOYb
+      - req_8sOzuLmS8wHBbE
       Stripe-Should-Retry:
       - 'false'
       Stripe-Version:
@@ -68,7 +68,7 @@ http_interactions:
       encoding: UTF-8
       string: |-
         {
-          "id": "pi_3NgDHRGYQ7BVXMvg0X7Gdanl",
+          "id": "pi_3NgUgoGYQ7BVXMvg137Rc7tl",
           "object": "payment_intent",
           "amount": 1000,
           "amount_capturable": 0,
@@ -82,9 +82,9 @@ http_interactions:
           "canceled_at": null,
           "cancellation_reason": null,
           "capture_method": "automatic",
-          "client_secret": "pi_3NgDHRGYQ7BVXMvg0X7Gdanl_secret_TaOTUDehmq3GQpq5ZtDBRpCER",
+          "client_secret": "pi_3NgUgoGYQ7BVXMvg137Rc7tl_secret_zjT1K4N06JdVvr8iVzRWjSM6n",
           "confirmation_method": "automatic",
-          "created": 1692305937,
+          "created": 1692372858,
           "currency": "eur",
           "customer": null,
           "description": null,
@@ -119,5 +119,5 @@ http_interactions:
           "transfer_data": null,
           "transfer_group": null
         }
-  recorded_at: Thu, 17 Aug 2023 20:58:58 GMT
+  recorded_at: Fri, 18 Aug 2023 15:34:18 GMT
 recorded_with: VCR 6.2.0

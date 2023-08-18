@@ -17,10 +17,10 @@ module PaymentsGateway
         let(:publishableKey) { SecureRandom.uuid }
 
         before do
+          allow_any_instance_of(StripeService).to receive(:publishable_key).and_return(publishableKey)
           expect(Stripe::PaymentIntent).to receive(:create).and_return(
             {
               id:,
-              publishableKey:,
               clientSecret:,
               amount:,
               currency:

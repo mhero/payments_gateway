@@ -14,7 +14,7 @@ http_interactions:
       Content-Type:
       - application/x-www-form-urlencoded
       X-Stripe-Client-Telemetry:
-      - '{"last_request_metrics":{"request_id":"req_wOYmQ8TTFaZOYb","request_duration_ms":1766}}'
+      - '{"last_request_metrics":{"request_id":"req_8sOzuLmS8wHBbE","request_duration_ms":625}}'
       Stripe-Version:
       - '2023-08-16'
       X-Stripe-Client-User-Agent:
@@ -33,7 +33,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Thu, 17 Aug 2023 20:58:59 GMT
+      - Fri, 18 Aug 2023 15:34:19 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -53,11 +53,11 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Idempotency-Key:
-      - 2351fc1a-63b6-46ae-8f3c-104f8992e9b0
+      - 1bdfdeaa-3aa6-47f5-ac4c-7e2437df8a70
       Original-Request:
-      - req_raxhDO0TTDcecQ
+      - req_mESnvP44osuAFu
       Request-Id:
-      - req_raxhDO0TTDcecQ
+      - req_mESnvP44osuAFu
       Stripe-Version:
       - '2023-08-16'
       X-Stripe-Routing-Context-Priority-Tier:
@@ -73,9 +73,9 @@ http_interactions:
             "doc_url": "https://stripe.com/docs/error-codes/resource-missing",
             "message": "No such customer: '4'",
             "param": "customer",
-            "request_log_url": "https://dashboard.stripe.com/test/logs/req_raxhDO0TTDcecQ?t=1692305938",
+            "request_log_url": "https://dashboard.stripe.com/test/logs/req_mESnvP44osuAFu?t=1692372859",
             "type": "invalid_request_error"
           }
         }
-  recorded_at: Thu, 17 Aug 2023 20:59:00 GMT
+  recorded_at: Fri, 18 Aug 2023 15:34:19 GMT
 recorded_with: VCR 6.2.0

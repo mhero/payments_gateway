@@ -23,10 +23,10 @@ module PaymentsGateway
     context 'with valid payment provider' do
       context 'with successful intent' do
         before do
+          allow_any_instance_of(described_class).to receive(:publishable_key).and_return(publishableKey)
           expect(Stripe::PaymentIntent).to receive(:create).and_return(
             {
               id:,
-              publishableKey:,
               clientSecret:,
               amount:,
               currency:

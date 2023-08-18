@@ -53,13 +53,17 @@ class StripeService < ApplicationService
         version: 'latest',
         paymentIntent: {
           id: @payment.intent['id'],
-          publishableKey: @payment.intent['publishableKey'],
+          publishableKey: publishable_key,
           clientSecret: @payment.intent['clientSecret'],
           amount: @payment.intent['amount'],
           currency: @payment.intent['currency']
         }
       }
     }
+  end
+
+  def publishable_key
+    ENV.fetch('PULISHABLE_KEY', nil)
   end
 
   def create_intent
