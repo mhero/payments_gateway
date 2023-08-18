@@ -1,8 +1,17 @@
 # PaymentsGateway
-Short description and motivation.
+I created an endpoint to manage a payment creation and return the octo response asked n the challenge
+
 
 ## Usage
-How to use my plugin.
+This is a rails engine that will expose functionality for payments
+Currently it's using only stripe, but it's extendable to handle any other payment
+
+This needs to be mounted as a gem in a rails app using the config described here
+
+
+## Dependencies
+
+* Ruby 3.2.2
 
 ## Local build
 
@@ -31,10 +40,10 @@ Or install it yourself as:
 $ gem install payments_gateway
 ```
 
-Set `STRIPE_API_KEY` in `.env` file
+Set `STRIPE_API_KEY` in `.env` file(you can use .env.test a reference)
 
 Add:
-`mount PaymentsGateway::Engine => "/payments_gateway/"` to `config/routes.rb`
+`mount PaymentsGateway::Engine, at: "/payments_gateway/"` to `config/routes.rb`
 
 Finally:
 
