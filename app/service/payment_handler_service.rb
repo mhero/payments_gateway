@@ -11,10 +11,7 @@ class PaymentHandlerService < ApplicationService
     if @payment.save
       @payment.provider_service.call(@payment)
     else
-      Outcome.new(
-        success: false,
-        result: @payment.errors
-      )
+      Outcome.failed(@payment.errors)
     end
   end
 end

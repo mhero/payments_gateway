@@ -14,10 +14,7 @@ class StripeService < ApplicationService
     return invalid_provider unless PaymentsGateway::Payment.stripe?(@payment.provider)
 
     if create_intent
-      Outcome.new(
-        success: true,
-        result: card_payment
-      )
+      Outcome.successful(card_payment)
     else
       unable_to_create
     end
@@ -26,24 +23,15 @@ class StripeService < ApplicationService
   private
 
   def no_payment
-    Outcome.new(
-      success: false,
-      result: 'no payment provided'
-    )
+    Outcome.failed('no payment provided')
   end
 
   def invalid_provider
-    Outcome.new(
-      success: false,
-      result: 'invalid provider'
-    )
+    Outcome.failed('invalid provider')
   end
 
   def unable_to_create
-    Outcome.new(
-      success: false,
-      result: 'unable to create payment intent'
-    )
+    Outcome.failed('unable to create payment intent')
   end
 
   def card_payment

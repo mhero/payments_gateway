@@ -11,4 +11,12 @@ class Outcome
   def success?
     success
   end
+
+  def self.failed(message)
+    new(success: false, result: message)
+  end
+
+  def self.successful(message)
+    new(success: true, result: message)
+  end
 end
