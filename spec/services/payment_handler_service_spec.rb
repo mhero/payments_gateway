@@ -32,7 +32,7 @@ module PaymentsGateway
       end
 
       it 'returns a success response' do
-        expect(subject.success).to be true
+        expect(subject.success?).to be true
       end
     end
 
@@ -44,7 +44,7 @@ module PaymentsGateway
       end
 
       it 'returns an error response' do
-        expect(subject.success).to be false
+        expect(subject.success?).to be false
       end
     end
 
@@ -56,7 +56,7 @@ module PaymentsGateway
       end
 
       it 'returns an error response' do
-        expect(subject.success).to be false
+        expect(subject.success?).to be false
       end
     end
   end

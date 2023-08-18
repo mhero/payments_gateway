@@ -15,7 +15,7 @@ module PaymentsGateway
 
       it 'returns a complete card payment object' do
         subject = described_class.call(payment)
-        expect(subject.success).to be false
+        expect(subject.success?).to be false
         expect(subject.result).to eq('no payment provided')
       end
     end
@@ -37,7 +37,7 @@ module PaymentsGateway
         let(:payment) { create(:payment) }
         it 'returns a complete card payment object' do
           subject = described_class.call(payment)
-          expect(subject.success).to be true
+          expect(subject.success?).to be true
           expect(subject.result).to eq(
             {
               gateway: 'stripe',
@@ -63,7 +63,7 @@ module PaymentsGateway
         let(:payment) { create(:payment) }
         it 'returns a complete card payment object' do
           subject = described_class.call(payment)
-          expect(subject.success).to be false
+          expect(subject.success?).to be false
           expect(subject.result).to eq('unable to create payment intent')
         end
       end

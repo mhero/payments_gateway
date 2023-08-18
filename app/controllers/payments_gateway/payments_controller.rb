@@ -7,7 +7,7 @@ module PaymentsGateway
         ::PaymentsGateway::Payment.new(payment_params)
       )
 
-      render json: payment_process.result, status: payment_process.success ? :created : :unprocessable_entity
+      render json: payment_process.result, status: payment_process.success? ? :created : :unprocessable_entity
     end
 
     private

@@ -11,7 +11,7 @@ class PaymentHandlerService < ApplicationService
     if @payment.save
       @payment.provider_service.call(@payment)
     else
-      OpenStruct.new(
+      Outcome.new(
         success: false,
         result: @payment.errors
       )
