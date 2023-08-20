@@ -60,16 +60,19 @@ class StripeService < ApplicationService
   end
 
   def create_intent
-    intent = Stripe::PaymentIntent.create({
-                                            amount: @payment.amount,
-                                            currency: @payment.currency,
-                                            payment_method_types: PAYMENT_METHOD_TYPES,
-                                            customer: @payment.customer_external_id
-                                          })
-    intent[:status] = 'success'
-    payment.update(intent:)
+    intent = stripe_intent
+    payment.update(intent:, succeeded_at: Time.zone.now) if intent
+    intent
+  end
+
+  def stripe_intent
+    Stripe::PaymentIntent.create({
+                                   amount: @payment.amount,
+                                   currency: @payment.currency,
+                                   payment_method_types: PAYMENT_METHOD_TYPES,
+                                   customer: @payment.customer_external_id
+                                 })
   rescue Stripe::InvalidRequestError
-    payment.update(intent: { status: 'failed' })
     nil
   end
 end
