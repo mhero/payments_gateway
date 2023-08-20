@@ -55,16 +55,31 @@ module PaymentsGateway
           )
         end
       end
+
       context 'with failed intent' do
         before do
           allow(Stripe::PaymentIntent).to receive(:create).and_raise(Stripe::InvalidRequestError.new('some error', nil))
         end
 
         let(:payment) { create(:payment) }
-        it 'returns a complete card payment object' do
+        it 'returns an error' do
           subject = described_class.call(payment)
           expect(subject.success?).to be false
           expect(subject.result).to eq('unable to create payment intent')
+        end
+      end
+
+      context 'with failed publishable key' do
+        before do
+          allow_any_instance_of(described_class).to receive(:publishable_key).and_return(nil)
+          allow(Stripe::PaymentIntent).to receive(:create).and_raise(Stripe::InvalidRequestError.new('some error', nil))
+        end
+
+        let(:payment) { create(:payment) }
+        it 'returns an error' do
+          subject = described_class.call(payment)
+          expect(subject.success?).to be false
+          expect(subject.result).to eq('failure while returning intent')
         end
       end
     end

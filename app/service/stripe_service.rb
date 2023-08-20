@@ -12,6 +12,7 @@ class StripeService < ApplicationService
   def call
     return no_payment unless @payment
     return invalid_provider unless PaymentsGateway::Payment.stripe?(@payment.provider)
+    return no_publishable_key unless publishable_key
 
     if create_intent
       Outcome.successful(card_payment)
@@ -32,6 +33,10 @@ class StripeService < ApplicationService
 
   def unable_to_create
     Outcome.failed('unable to create payment intent')
+  end
+
+  def no_publishable_key
+    Outcome.failed('failure while returning intent')
   end
 
   def card_payment
